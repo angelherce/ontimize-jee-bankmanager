@@ -15,6 +15,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 	<bean id="BranchService" class="com.ontimize.jee.common.hessian.OntimizeHessianProxyFactoryBean" lazy-init="true">
 	    <property name="proxyFactory" ref="hessianProxyFactory"></property>
 	    <property name="serviceRelativeUrl" value="/${server-context}/services/hessian/branchservice"></property>
-	    <property name="serviceInterface" value="com.imatia.jee.bankmanager.common.base.services.IBranchService"></property>
+		<property name="serviceInterface" value="com.imatia.jee.bankmanager.common.base.services.IBranchService"></property>
 	</bean>
+	
+	<!-- Servicio de clientes -->
+	<bean id="CustomerService" class="com.ontimize.jee.common.hessian.OntimizeHessianProxyFactoryBean" lazy-init="true">
+		<property name="proxyFactory" ref="hessianProxyFactory"></property>
+		<property name="serviceRelativeUrl" value="/${server-context}/services/hessian/customerservice"></property>
+		<property name="serviceInterface" value="com.imatia.jee.bankmanager.common.base.services.ICustomerService"></property>
+   </bean>
 </beans>
