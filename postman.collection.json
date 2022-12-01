@@ -1,0 +1,747 @@
+{
+	"info": {
+		"_postman_id": "830f5319-9f72-457f-bb57-819658017557",
+		"name": "ONTIMIZE-JEE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19149134"
+	},
+	"item": [
+		{
+			"name": "BRANCH",
+			"item": [
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}/branch?columns=officeid,name",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}"
+							],
+							"path": [
+								"branch"
+							],
+							"query": [
+								{
+									"key": "columns",
+									"value": "officeid,name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\r\n    \"data\": {\r\n        \"DETAILS\": \"Nueva sucursal A\",\r\n        \"PHONE\": \"111223A47\",\r\n        \"OFFICEID\": 1500,\r\n        \"ADDRESS\": \"Citexvi\",\r\n        \"NAME\": \"ImatiaBankA\",\r\n        \"STARTDATE\": 797032800000\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}/branch",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"filter\" :{\r\n        \"OFFICEID\": \"1500\"\r\n    },\r\n    \"columns\":[\"NAME\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}/branch/search",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}"
+							],
+							"path": [
+								"branch",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"OFFICEID\": \"1500\"\r\n    },\r\n    \"data\": {\r\n        \"NAME\": \"ImatiaBankA-Edited\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}/branch",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"OFFICEID\": \"1500\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}/branch",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{BRANCH_SERVICE}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUSTOMER",
+			"item": [
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}/customer?columns=customerid,name",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}"
+							],
+							"path": [
+								"customer"
+							],
+							"query": [
+								{
+									"key": "columns",
+									"value": "customerid,name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const ID = pm.response.json().data.CUSTOMERID;\r",
+									"pm.globals.set(\"ONTIMIZE_JEE_ID_CUSTOMER_INSERT\", ID );\r",
+									"console.log(`ONTIMIZE_JEE_ID_CUSTOMER_INSERT = ${pm.globals.get(\"ONTIMIZE_JEE_ID_CUSTOMER_INSERT\")}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\r\n    \"data\": {\r\n        \"NAME\": \"Proof\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}/customer",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"filter\" :{\r\n        \"CUSTOMERID\": {{ONTIMIZE_JEE_ID_CUSTOMER_INSERT}}\r\n    },\r\n    \"columns\":[\"NAME\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}/customer/search",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}"
+							],
+							"path": [
+								"customer",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"CUSTOMERID\": {{ONTIMIZE_JEE_ID_CUSTOMER_INSERT}}\r\n    },\r\n    \"data\": {\r\n        \"NAME\": \"Proof-Edited\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}/customer",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"CUSTOMERID\": {{ONTIMIZE_JEE_ID_CUSTOMER_INSERT}}\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}/customer",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{CUSTOMER_SERVICE}}"
+							],
+							"path": [
+								"customer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EMPLOYEE",
+			"item": [
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}/employee?columns=employeeid,employeename",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}"
+							],
+							"path": [
+								"employee"
+							],
+							"query": [
+								{
+									"key": "columns",
+									"value": "employeeid,employeename"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const ID = pm.response.json().data.EMPLOYEEID;\r",
+									"pm.globals.set(\"ONTIMIZE_JEE_ID_EMPLOYEE_INSERT\", ID );\r",
+									"console.log(`ONTIMIZE_JEE_ID_EMPLOYEE_INSERT = ${pm.globals.get(\"ONTIMIZE_JEE_ID_EMPLOYEE_INSERT\")}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\r\n    \"data\": {\r\n        \"EMPLOYEENAME\": \"Proof\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}/employee",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"filter\" :{\r\n        \"EMPLOYEEID\": {{ONTIMIZE_JEE_ID_EMPLOYEE_INSERT}}\r\n    },\r\n    \"columns\":[\"EMPLOYEENAME\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}/employee/search",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}"
+							],
+							"path": [
+								"employee",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"EMPLOYEEID\": {{ONTIMIZE_JEE_ID_EMPLOYEE_INSERT}}\r\n    },\r\n    \"data\": {\r\n        \"EMPLOYEENAME\": \"Proof-Edited\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}/employee",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"EMPLOYEEID\": {{ONTIMIZE_JEE_ID_EMPLOYEE_INSERT}}\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}/employee",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{EMPLOYEE_SERVICE}}"
+							],
+							"path": [
+								"employee"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOVEMENT",
+			"item": [
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}/movement?columns=movementid,concept,movement,accountid",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}"
+							],
+							"path": [
+								"movement"
+							],
+							"query": [
+								{
+									"key": "columns",
+									"value": "movementid,concept,movement,accountid"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "INSERT",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const ID = pm.response.json().data.MOVEMENTID;\r",
+									"pm.globals.set(\"ONTIMIZE_JEE_ID_MOVEMENT_INSERT\", ID );\r",
+									"console.log(`ONTIMIZE_JEE_ID_MOVEMENT_INSERT = ${pm.globals.get(\"ONTIMIZE_JEE_ID_MOVEMENT_INSERT\")}`);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\t{\r\n    \"data\": {\r\n        \"ACCOUNTID\": 1,\r\n        \"CONCEPT\": \"Proof\",\r\n        \"MOVEMENT\": 5\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}/movement",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}"
+							],
+							"path": [
+								"movement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QUERY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"filter\" :{\r\n        \"MOVEMENTID\": {{ONTIMIZE_JEE_ID_MOVEMENT_INSERT}}\r\n    },\r\n    \"columns\":[\"MOVEMENTID\", \"CONCEPT\", \"MOVEMENT\", \"ACCOUNTID\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}/movement/search",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}"
+							],
+							"path": [
+								"movement",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"MOVEMENTID\": {{ONTIMIZE_JEE_ID_MOVEMENT_INSERT}}\r\n    },\r\n    \"data\": {\r\n        \"CONCEPT\": \"Proof-Edited\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}/movement",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}"
+							],
+							"path": [
+								"movement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"filter\" :{\r\n        \"MOVEMENTID\": {{ONTIMIZE_JEE_ID_MOVEMENT_INSERT}}\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}/movement",
+							"host": [
+								"{{HOST}}{{URL_REST}}{{MOVEMENT_SERVICE}}"
+							],
+							"path": [
+								"movement"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "demouser",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "demo",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "URL_REST",
+			"value": "/bankmanager-jee/services/rest",
+			"type": "string"
+		},
+		{
+			"key": "BRANCH_SERVICE",
+			"value": "/branches",
+			"type": "string"
+		},
+		{
+			"key": "CUSTOMER_SERVICE",
+			"value": "/customers",
+			"type": "string"
+		},
+		{
+			"key": "EMPLOYEE_SERVICE",
+			"value": "/employees",
+			"type": "string"
+		},
+		{
+			"key": "MOVEMENT_SERVICE",
+			"value": "/movements",
+			"type": "string"
+		}
+	]
+}
