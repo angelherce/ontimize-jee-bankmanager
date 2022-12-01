@@ -1,0 +1,14 @@
+**/.project
+**/.classpath
+**/.classpath
+**/.settings
+
+/.idea/
+**/target/
+**/bin/
+
+bankmanager-server/src/main/db/*.lck
+bankmanager-server/src/main/db/*.log
+bankmanager-server/src/main/db/*.script
+bankmanager-server/src/main/db/*.tmp
+bankmanager-server/src/main/db/*.properties
