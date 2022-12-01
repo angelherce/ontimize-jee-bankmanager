@@ -16,4 +16,7 @@
       <MenuItem attr="manager-branch" text="manager-branch" />
       <MenuItem attr="manager-account" text="manager-account" />
    </Menu>
+   <Menu attr="menu.employee" text="menu.employee">
+		<MenuItem attr="manager-employee" text="manager-employee"></MenuItem>
+	</Menu>
 </ApplicationMenuBar>
