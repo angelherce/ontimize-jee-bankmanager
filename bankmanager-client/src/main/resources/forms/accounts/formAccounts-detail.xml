@@ -36,4 +36,10 @@
          </Row>
       </Column>
    </Row>
+   <Column title="account.CustomerAccounts">
+	<Table entity="CustomerService.customerAccount" cols="CUSTOMERACCOUNTID;CUSTOMERID;ACCOUNTID"
+		controls="yes" key="CUSTOMERACCOUNTID" refreshbutton="yes"
+		parentkeys="ACCOUNTID" visiblecols="CUSTOMERID"
+		renderers="CUSTOMERID:comboReferenceAccountCustomer" />
+	</Column>
 </FormExt>
