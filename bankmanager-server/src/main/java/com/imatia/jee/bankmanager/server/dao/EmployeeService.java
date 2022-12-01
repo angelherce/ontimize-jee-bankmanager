@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.imatia.jee.bankmanager.common.base.services.IEmployeeService;
-import com.imatia.jee.bankmanager.server.dao.EmployeeDao;
 import com.imatia.jee.bankmanager.server.dao.EmployeeTypeDao;
+import com.imatia.jee.bankmanager.server.services.EmployeeDao;
 import com.ontimize.db.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;

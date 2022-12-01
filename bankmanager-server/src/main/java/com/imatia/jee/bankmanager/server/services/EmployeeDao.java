@@ -1,4 +1,4 @@
-package com.imatia.jee.bankmanager.server.dao;
+package com.imatia.jee.bankmanager.server.services;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
