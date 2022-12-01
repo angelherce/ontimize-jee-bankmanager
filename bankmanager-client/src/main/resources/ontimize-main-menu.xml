@@ -12,4 +12,7 @@
    <Menu attr="menu.branch" text="menu.branch">
       <MenuItem attr="manager-branch" text="manager-branch" />
    </Menu>
+   <Menu attr="menu.customer" text="menu.customer">
+      <MenuItem attr="manager-customer" text="manager-customer" />
+   </Menu>
 </ApplicationMenuBar>
